@@ -91,6 +91,7 @@ Write-Report "Updating Docker Scout environment records..."
 $envMappings = @{
     'production' = @(
         'vagedis74/vagedis:claude-proxy-latest',
+        'vagedis74/vagedis:docker-scout-latest',
         'vagedis74/vagedis:mcp-desktop-commander',
         'vagedis74/vagedis:mcp-github-chat'
     )
