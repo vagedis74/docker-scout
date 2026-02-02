@@ -18,7 +18,7 @@ on:
 env:
   REGISTRY: docker.io
   IMAGE_NAME: vagedis74/vagedis
-  SHA: ${{ github.event.pull_request.head.sha || github.event.after }}
+  SHA: ${{ github.event.pull_request.head.sha || github.event.after || github.sha }}
 
 jobs:
   build:
@@ -115,7 +115,7 @@ jobs:
 
       - name: Upload SARIF results
         if: always()
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: scout-results.sarif
         continue-on-error: true
