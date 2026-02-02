@@ -1,6 +1,6 @@
-FROM nginx:1.27-alpine
+FROM nginx:1.28-alpine-slim
 
-LABEL org.opencontainers.image.source="https://github.com/OWNER/docker-scout"
+LABEL org.opencontainers.image.source="https://github.com/vagedis74/docker-scout"
 LABEL org.opencontainers.image.description="Docker Scout demo — nginx serving a static page"
 
 # Remove default nginx content
