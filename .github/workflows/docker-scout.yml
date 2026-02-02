@@ -74,14 +74,14 @@ jobs:
         continue-on-error: true
         with:
           command: quickview
-          image: ${{ steps.meta.outputs.tags }}
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.version }}
           organization: vagedis74
 
       - name: Docker Scout - CVEs
         uses: docker/scout-action@v1
         with:
           command: cves
-          image: ${{ steps.meta.outputs.tags }}
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.version }}
           organization: vagedis74
           only-severities: critical,high
           only-fixed: true
@@ -93,7 +93,7 @@ jobs:
         continue-on-error: true
         with:
           command: recommendations
-          image: ${{ steps.meta.outputs.tags }}
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.version }}
           organization: vagedis74
 
       - name: Docker Scout - Compare on PR
@@ -102,7 +102,7 @@ jobs:
         uses: docker/scout-action@v1
         with:
           command: compare
-          image: ${{ steps.meta.outputs.tags }}
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.version }}
           to-env: production
           ignore-unchanged: true
           only-severities: critical,high
