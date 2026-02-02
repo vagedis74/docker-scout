@@ -51,7 +51,7 @@ jobs:
           labels: |
             org.opencontainers.image.revision=${{ env.SHA }}
           tags: |
-            type=edge,branch=$repo.default_branch
+            type=edge,branch=main
             type=semver,pattern=v{{version}}
             type=sha,prefix=,suffix=,format=short
 
@@ -111,7 +111,7 @@ jobs:
       - name: Record to Scout environment
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
-          docker scout environment production ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} --org vagedis74 --platform linux/amd64 || true
+          docker scout environment production ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:edge --org vagedis74 --platform linux/amd64 || true
 
       - name: Upload SARIF results
         if: always()
