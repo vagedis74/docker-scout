@@ -92,6 +92,7 @@ $envMappings = @{
     'production' = @(
         'vagedis74/vagedis:edge',
         'vagedis74/vagedis:claude-proxy-latest',
+        'vagedis74/vagedis:n8n-self-hosted',
         'vagedis74/vagedis:mcp-desktop-commander',
         'vagedis74/vagedis:mcp-github-chat'
     )
